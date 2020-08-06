@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head> 
+    <title>DevOps SpringBoot App</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body style="background-color:green;text-align:center">
+	<h1>Application form successfully submitted</h1>
+      <p th:text="'The Name Entered is  ' + ${register.name}" />
+      <p th:text="'The Email Entered is  ' + ${register.email}" />
+    <a href="/register">Click here to go back to main page</a>
+</body>
+</html>
