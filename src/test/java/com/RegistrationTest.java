@@ -23,7 +23,7 @@ public class RegistrationTest {
 	@Test
 	public void FormTest1() throws Exception {
 		mockMvc.perform(get("/register"))
-				.andExpect(content().string(containsString("Please fill the Application form")));
+				.andExpect(content().string(containsString("Please fill the SignUp form")));
 	}
 
 	@Test
@@ -36,20 +36,55 @@ public class RegistrationTest {
 	public void formTest3() throws Exception {
 			mockMvc.perform(get("/register"))
 					.andExpect(content().string(containsString("Please enter your Email")));
+			
 	}
+	
+	@Test
+	public void formTest4() throws Exception {
+			mockMvc.perform(get("/register"))
+					.andExpect(content().string(containsString("Submit")));
+			
+	}
+	
+	@Test
+	public void formTest5() throws Exception {
+			mockMvc.perform(get("/register"))
+					.andExpect(content().string(containsString("Reset")));
+			
+	}
+	
+	
 	
 	@Test
 	public void submitsTest1() throws Exception {
 		mockMvc.perform(post("/register").param("name", "lakshmanan").param("email", "devops@devops.com"))
-				.andExpect(content().string(containsString("Application form successfully submitted")))
-				.andExpect(content().string(containsString("Click here to go back to main page")));
+				.andExpect(content().string(containsString("You have successfully signed up for our services")));
+		}
+	
+	@Test
+		public void submitsTest2() throws Exception {
+			mockMvc.perform(post("/register").param("name", "lakshmanan").param("email", "devops@devops.com"))
+					.andExpect(content().string(containsString("Click here to go back to main page")));
 	}
 
 	@Test
-	public void submitsTest2() throws Exception {
+	public void submitsTest3() throws Exception {
 		mockMvc.perform(post("/register").param("name", "devops").param("email", "devops@test.com"))
 				.andExpect(content().string(containsString("devops")))
 				.andExpect(content().string(containsString("devops@test.com")));
 	}
+	@Test
+	public void submitsTest4() throws Exception {
+		mockMvc.perform(post("/register").param("name", "lakshmanan").param("email", "devops@test.com"))
+				.andExpect(content().string(containsString("The Name Entered is  lakshmanan")));
 
+	}
+	
+	@Test
+	public void submitsTest5() throws Exception {
+		mockMvc.perform(post("/register").param("name", "lakshmanan").param("email", "devops@test.com"))
+				.andExpect(content().string(containsString("The Email Entered is  devops@test.com")));
+
+	}
+	
 }
